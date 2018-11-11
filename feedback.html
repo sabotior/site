@@ -7,11 +7,48 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400,700,900" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script>
+        (function ($) {
+                $(function () {
+                    $.get('cities.json', {}, function (cities) {
+                        var $select = $('<select/>');
+                        cities.forEach(function (item) {
+                            var $option = $('<option />', {
+                                value: item.city,
+                                text: item.city
+                            });
+                            $select.append($option);
+                        });
+                        $('#citiesField').append($select);
+                    }, 'json');
+                });
+            })(jQuery);
+    </script>
+  <script>
+        $( function() {
+          $( '#datepicker' ).datepicker({
+              dayNamesMin: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+              monthNames: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+              monthNamesShort: ['Янв', 'Февр', 'Март', 'Апр', 'Май', 'Июнь', 'Июль', 'Авг', 'Сент', 'Окт', 'Нояб', 'Дек'],
+              firstDay: 1,
+              dateFormat: 'dd.mm.yy',
+              changeMonth: true,
+                 changeYear: true,
+                 showOn: "button",
+      buttonImage: "img/calendar.gif",
+      buttonImageOnly: true
+          });  
+        });       
+    </script>
     <!--<script src="js/menu.js"></script>-->
-    
+
 </head>
 
 <body>
@@ -160,75 +197,35 @@
             </li>
         </ul>
     </nav>
- 
 
-        <style>
-            td select,
-            td input {
-                width: 150px;
-            }
-    
-            label {
-                display: block;
-            }
-    
-            .error input,
-            .error textarea {
-                border: 1px solid red;
-            }
-    
-            .error {
-                color: red;
-            }
-        </style>
- 
-    
-    <form class="container">
-        <table>
-            <tr>
-                <td>Имя</td>
-                <td>
-                    <input name="fname">
-                </td>
-            </tr>
-            <tr>
-                <td>Телефон</td>
-                <td>
-                    <input name="phone" placeholder="+7(000)000-0000">
-                </td>
-            </tr>
-            <tr>
-                <td>E-mail</td>
-                <td>
-                    <input name="email">
-                </td>
-            </tr>
-        </table>
-    
-        Сообщение:
-        <label>
-            <textarea name="message" style="display:block;width:400px;height:80px"></textarea>
-        </label>
-    
-        <input type="button" onclick="validate(this.form)" value="Отправить">
-    </form>
-    
-   
-    
-  
+    <div class="container">
+        <h3>Связаться с нами</h3>
+        <form method="GET" name="feedback">
+            <label class="form-field" for="name">Имя<input type="text" id="name" name="name" /></label>
+            <label class="form-field" for="phone">Телефон<input data-validation-rule="phone" type="text" id="phone"
+                    name="phone" /></label>
+            <label class="form-field" for="email">E-mail<input data-validation-rule="email" type="text" id="email" name="email" /></label>
+            <label class="form-field" id="citiesField" for="cities">Город</label>
+            <p>День рождения <input type="text" id="datepicker" size="30"></p>
+            <label class="form-field" for="text">Сообщение<textarea rows="10" cols="100" id="text" name="text"></textarea></label>
 
-
+            <input type="submit" id="submit" value="Отправить">
+        </form>
+    </div>
 
     <footer class="footer">
         <div class="footer-menu">
             <div class="container">
                 <div class="brand-info">
                     <a class="logo" href="index.html">
-                            <img src="img/logo.png" alt="logo">BRAN
-                            <span>D</span>
-                        </a>
-                    <p>Objectively transition extensive data rather than cross functional solutions. Monotonectally syndicate multidisciplinary materials before go forward benefits. Intrinsicly syndicate an expanded array of processes and cross-unit partnerships.</p>
-                    <p>Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize superior initiatives for wireless technologies. Dynamically optimize.</p>
+                        <img src="img/logo.png" alt="logo">BRAN
+                        <span>D</span>
+                    </a>
+                    <p>Objectively transition extensive data rather than cross functional solutions. Monotonectally
+                        syndicate multidisciplinary materials before go forward benefits. Intrinsicly syndicate an
+                        expanded array of processes and cross-unit partnerships.</p>
+                    <p>Efficiently plagiarize 24/365 action items and focused infomediaries. Distinctively seize
+                        superior initiatives for wireless technologies. Dynamically optimize.</p>
                 </div>
                 <div class="about-company">
                     <h1>COMPANY</h1>
@@ -265,7 +262,7 @@
         <div class="copyright-flex">
             <div class="container">
                 <div class="copyright">
-                    <span>&copy;&nbsp;2018  Brand  All Rights Reserved.</span>
+                    <span>&copy;&nbsp;2018 Brand All Rights Reserved.</span>
                 </div>
                 <div class="social-icon">
                     <div class="icon">
@@ -288,6 +285,7 @@
         </div>
     </footer>
     <script src="js/feedback.js"></script>
+
 </body>
 
 </html>

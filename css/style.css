@@ -14,7 +14,7 @@ header {
 
 .container {
     width: 1140px;
-    margin: 0 auto;
+    margin: 0 auto 15px;
 }
 
 .header-flex {
@@ -1311,7 +1311,21 @@ main {
     font-family: "Font Awesome";
     font-size: 24px;
     font-weight: 400;
-    line-height: 47px;
-
-    
+    line-height: 47px;    
+}
+.form-field {
+    clear: both;
+    display: block;
+    max-width: 350px;
+    padding-bottom: 10px;
+}
+.form-field input.invalid {
+    border: 1px solid red;
+}
+.form-field input {
+    float: right;
+}
+.form-field textarea {
+    clear: both;
+    display: block;
 }
